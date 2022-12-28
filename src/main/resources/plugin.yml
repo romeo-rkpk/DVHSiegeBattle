@@ -1,0 +1,8 @@
+name: DVHSiegeBattle
+version: '$version'
+main: com.danvhae.minecraft.siege.DVHSiegeBattle
+api-version: 1.12.2
+authors: [해야, 보라비, 단츄, 로미오는줄리엣]
+description: 꿈벅 공성전 콘텐츠 전투 제어 플러그인
+
+depend: [WorldEdit, WorldGuard, DVHSiegeCore]
