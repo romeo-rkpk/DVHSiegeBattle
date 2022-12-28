@@ -8,6 +8,10 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class DVHSiegeBattle : JavaPlugin(){
 
+    companion object{
+        const val NEAR_DISTANCE = 100.0
+    }
+
     private var instance: DVHSiegeBattle? = null
         get() {return field!!}
 
