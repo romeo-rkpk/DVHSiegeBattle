@@ -10,10 +10,11 @@ class DVHSiegeBattle : JavaPlugin(){
 
     companion object{
         const val NEAR_DISTANCE = 100.0
+        var instance: DVHSiegeBattle? = null
+            get() {return field!!}
+            private set
     }
 
-    private var instance: DVHSiegeBattle? = null
-        get() {return field!!}
 
     override fun onEnable() {
         instance = this
