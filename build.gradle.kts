@@ -27,7 +27,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
-    compileOnly("com.danvhae.minecraft.siege:SiegeCore:0.1.0-a1")
+    compileOnly("com.danvhae.minecraft.siege:SiegeCore:0.3.0-a1")
 }
 
 tasks.test {
