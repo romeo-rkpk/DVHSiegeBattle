@@ -16,10 +16,11 @@ class EnterCastleListener : Listener {
     @EventHandler
     fun onEnterCastle(event: EnterCastleEvent){
         val castle = event.castle
+        //Bukkit.getLogger().info("별 진입 ${castle.name} (${castle.ownerPlayer()?.team})")
         if(castle.status != SiegeCastleStatus.PEACEFUL)return
-        if(castle.owner == null)return
+        if(castle.team == null)return
         event.siegePlayer?:return
-        if(event.siegePlayer!!.team == castle.ownerPlayer().team)return
+        if(event.siegePlayer!!.team == castle.ownerPlayer()?.team)return
         castle.status = SiegeCastleStatus.UNDER_BATTLE
     }
 

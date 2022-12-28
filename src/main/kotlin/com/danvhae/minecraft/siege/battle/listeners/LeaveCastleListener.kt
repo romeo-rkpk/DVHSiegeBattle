@@ -15,7 +15,7 @@ class LeaveCastleListener : Listener {
     fun onLeaveCastle(event:LeaveCastleEvent){
         val castle = event.castle
         if(castle.status != SiegeCastleStatus.UNDER_BATTLE)return
-        val ownerTeam = castle.ownerPlayer().team
+        val ownerTeam = castle.ownerPlayer()?.team
         val leaverTeam = event.siegePlayer?.team?:return
         if(ownerTeam == leaverTeam)return
         for(player in Bukkit.getOnlinePlayers()){

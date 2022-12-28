@@ -40,7 +40,7 @@ class PlayerRespawnListener : Listener {
         val castles = LocationUtil.locationAtStars(event.entity.location)
         val respawnLocation:Location = if(castles.isNotEmpty()) {
             val castle = castles.toTypedArray()[0]
-            if(castle.ownerPlayer().team != siegePlayer.team)
+            if(castle.ownerPlayer()?.team != siegePlayer.team)
                 DVHSiegeCore.masterConfig.meetingRoom.toLocation()!!
             else if(castle.status == SiegeCastleStatus.UNDER_BATTLE)
                 castle.workPosition
