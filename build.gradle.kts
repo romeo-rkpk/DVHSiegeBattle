@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.danvhae.minecraft.siege"
-version = "0.0.0-a1"
+version = "0.1.0-a1"
 
 repositories {
     mavenCentral()
@@ -45,26 +45,3 @@ tasks.withType<ProcessResources>{
     }
 }
 
-publishing{
-
-    publications{
-        create<MavenPublication>("maven"){
-            groupId = group.toString()
-            artifactId = "SiegeBattle"
-            version = project.version.toString()
-
-        }
-    }
-
-    repositories{
-        maven{
-            name ="GitHubPackages"
-            url = uri("https://maven.pkg.github.com/romeo-rkpk/DVHSiegeBattle")
-            credentials{
-                username = env.fetch("GITHUB_NAME")
-                password = env.fetch("GITHUB_TOKEN")
-            }
-
-        }
-    }
-}
