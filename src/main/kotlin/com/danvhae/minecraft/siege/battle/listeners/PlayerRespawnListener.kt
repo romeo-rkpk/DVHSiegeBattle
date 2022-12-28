@@ -25,8 +25,9 @@ class PlayerRespawnListener : Listener {
     }
 
     init{
-        val bytes = FileUtil.readBytes(FILE_NAME)!!
-        savedLocation = FileUtil.fromBytes(bytes) as? HashMap<UUID, Location> ?: HashMap()
+        val bytes = FileUtil.readBytes(FILE_NAME)
+        savedLocation = bytes?.let { FileUtil.fromBytes(it) } as? HashMap<UUID, Location> ?: HashMap()
+        save()
     }
 
 
