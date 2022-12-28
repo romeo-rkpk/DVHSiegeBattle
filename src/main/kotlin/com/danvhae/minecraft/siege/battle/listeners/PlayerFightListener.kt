@@ -1,21 +1,22 @@
 package com.danvhae.minecraft.siege.battle.listeners
 
+import com.danvhae.minecraft.siege.battle.DVHSiegeBattle
 import com.danvhae.minecraft.siege.battle.utils.DistanceUtil
 import com.danvhae.minecraft.siege.core.objects.SiegeCastle
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
-import com.danvhae.minecraft.siege.core.utils.LocationUtil
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.entity.Projectile
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import kotlin.math.*
+import kotlin.math.max
+
 class PlayerFightListener : Listener {
 
     companion object{
         private fun damageRatioCalculate(dist:Double):Double{
-            return max(1.0 - dist / 100.0, 0.0)
+            return max(1.0 - dist / DVHSiegeBattle.NEAR_DISTANCE, 0.0)
         }
     }
     @EventHandler
