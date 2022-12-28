@@ -6,7 +6,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.danvhae.minecraft.siege"
+group = "com.danvhae.minecraft.siege.battle"
 version = "0.0.0-a1"
 
 repositories {
@@ -27,7 +27,8 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
-    compileOnly("com.danvhae.minecraft.siege:SiegeCore:0.3.0-a1")
+
+    compileOnly(files(env.fetch("DVH_SIEGE_CORE")))
 }
 
 tasks.test {
