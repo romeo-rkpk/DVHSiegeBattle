@@ -6,8 +6,8 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.danvhae.minecraft.siege"
-version = "0.1.0-a1"
+group = "com.danvhae.minecraft.siege.battle"
+version = "0.0.0-a1"
 
 repositories {
     mavenCentral()
@@ -27,7 +27,8 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
-    compileOnly("com.danvhae.minecraft.siege:SiegeCore:0.1.0-a1")
+
+    compileOnly(files(env.fetch("DVH_SIEGE_CORE")))
 }
 
 tasks.test {
@@ -45,3 +46,26 @@ tasks.withType<ProcessResources>{
     }
 }
 
+publishing{
+
+    publications{
+        create<MavenPublication>("maven"){
+            groupId = group.toString()
+            artifactId = "SiegeBattle"
+            version = project.version.toString()
+
+        }
+    }
+
+    repositories{
+        maven{
+            name ="GitHubPackages"
+            url = uri("https://maven.pkg.github.com/romeo-rkpk/DVHSiegeBattle")
+            credentials{
+                username = env.fetch("GITHUB_NAME")
+                password = env.fetch("GITHUB_TOKEN")
+            }
+
+        }
+    }
+}
