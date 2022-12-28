@@ -20,10 +20,7 @@ class EnterCastleListener : Listener {
         if(castle.owner == null)return
         event.siegePlayer?:return
         if(event.siegePlayer!!.team == castle.ownerPlayer().team)return
-        Bukkit.getLogger().info("EnterTeam:${event.siegePlayer!!.team}")
-        Bukkit.getLogger().info("OwnerTeam:${castle.ownerPlayer().alias}")
         castle.status = SiegeCastleStatus.UNDER_BATTLE
-        Bukkit.getLogger().info("${castle.name} : ${SiegeCastle.DATA[castle.id]!!.status}")
     }
 
 }
