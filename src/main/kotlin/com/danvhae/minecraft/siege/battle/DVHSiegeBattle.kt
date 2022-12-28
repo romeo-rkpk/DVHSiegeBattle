@@ -1,9 +1,6 @@
 package com.danvhae.minecraft.siege.battle
 
-import com.danvhae.minecraft.siege.battle.listeners.EnterCastleListener
-import com.danvhae.minecraft.siege.battle.listeners.IllegalProjectileUsedListener
-import com.danvhae.minecraft.siege.battle.listeners.LeaveCastleListener
-import com.danvhae.minecraft.siege.battle.listeners.PlayerFightListener
+import com.danvhae.minecraft.siege.battle.listeners.*
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -27,5 +24,6 @@ class DVHSiegeBattle : JavaPlugin(){
         pm.registerEvents(LeaveCastleListener(), this)
         pm.registerEvents(PlayerFightListener(), this)
         pm.registerEvents(IllegalProjectileUsedListener(), this)
+        pm.registerEvents(PlayerRespawnListener(), this)
     }
 }
