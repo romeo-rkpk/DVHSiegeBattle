@@ -14,6 +14,7 @@ import org.bukkit.entity.Projectile
 import org.bukkit.entity.ThrownPotion
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import java.util.*
 import kotlin.collections.ArrayList
@@ -133,6 +134,15 @@ class IllegalProjectileUsedListener : Listener {
             ).taskId
             break
         }
+    }
+
+    @EventHandler
+    fun onProjectileHit(event:ProjectileHitEvent){
+        val uuid = event.entity.uniqueId
+        val taskID = TASK_ID[uuid]?:return
+        Bukkit.getScheduler().cancelTask(taskID)
+        PROJECTILE_TABLE[uuid]?.remove()
+        PROJECTILE_TABLE.remove(uuid)
     }
 
 
