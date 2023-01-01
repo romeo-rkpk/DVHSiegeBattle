@@ -141,7 +141,7 @@ class IllegalProjectileUsedListener : Listener {
         val uuid = event.entity.uniqueId
         val taskID = TASK_ID[uuid]?:return
         Bukkit.getScheduler().cancelTask(taskID)
-        PROJECTILE_TABLE[uuid]?.remove()
+        //PROJECTILE_TABLE[uuid]?.remove()
         PROJECTILE_TABLE.remove(uuid)
     }
 
