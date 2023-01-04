@@ -2,9 +2,6 @@ package com.danvhae.minecraft.siege.battle.listeners
 
 import com.danvhae.minecraft.siege.core.enums.SiegeCastleStatus
 import com.danvhae.minecraft.siege.core.events.EnterCastleEvent
-import com.danvhae.minecraft.siege.core.objects.SiegeCastle
-import com.danvhae.minecraft.siege.core.objects.SiegePlayer
-import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 

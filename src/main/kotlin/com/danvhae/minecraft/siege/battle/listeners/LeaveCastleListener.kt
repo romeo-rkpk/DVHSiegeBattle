@@ -2,7 +2,6 @@ package com.danvhae.minecraft.siege.battle.listeners
 
 import com.danvhae.minecraft.siege.core.enums.SiegeCastleStatus
 import com.danvhae.minecraft.siege.core.events.LeaveCastleEvent
-import com.danvhae.minecraft.siege.core.objects.SiegeCastle
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
 import com.danvhae.minecraft.siege.core.utils.PlayerUtil
 import org.bukkit.Bukkit
