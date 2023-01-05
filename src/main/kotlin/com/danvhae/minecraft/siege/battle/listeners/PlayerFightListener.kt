@@ -2,6 +2,7 @@ package com.danvhae.minecraft.siege.battle.listeners
 
 import com.danvhae.minecraft.siege.battle.DVHSiegeBattle
 import com.danvhae.minecraft.siege.battle.utils.DistanceUtil
+import com.danvhae.minecraft.siege.core.DVHSiegeCore
 import com.danvhae.minecraft.siege.core.objects.SiegeCastle
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
 import org.bukkit.Bukkit
@@ -32,7 +33,7 @@ class PlayerFightListener : Listener {
             else -> return
         }
 
-        if(victim.location.world.name !in listOf("star", "DIM1"))return
+        if(victim.location.world.name !in listOf("star", "DIM1", DVHSiegeCore.masterConfig.wildWorldName))return
 
         val siegeVictim = SiegePlayer.DATA[victim.uniqueId]?:return
         val siegeAttacker = SiegePlayer.DATA[attacker.uniqueId]?:return
@@ -41,6 +42,8 @@ class PlayerFightListener : Listener {
             event.isCancelled = true
             return
         }
+
+        if(victim.location.world.name == DVHSiegeCore.masterConfig.wildWorldName)return
 
         var sum = 0.0
         var count = 0
