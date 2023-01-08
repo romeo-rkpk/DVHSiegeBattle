@@ -2,6 +2,7 @@ package com.danvhae.minecraft.siege.battle.listeners
 
 import com.danvhae.minecraft.siege.core.DVHSiegeCore
 import com.danvhae.minecraft.siege.core.enums.SiegeCastleStatus
+import com.danvhae.minecraft.siege.core.events.SiegeEndEvent
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
 import com.danvhae.minecraft.siege.core.utils.FileUtil
 import com.danvhae.minecraft.siege.core.utils.LocationUtil
@@ -58,6 +59,14 @@ class PlayerRespawnListener : Listener {
         val location = savedLocation[event.player.uniqueId]?:return
         savedLocation.remove(event.player.uniqueId)
         event.respawnLocation = location
+        save()
+    }
+
+    @EventHandler
+    fun onSiegeEnd(event:SiegeEndEvent){
+        for(uuid in savedLocation.keys){
+            savedLocation[uuid] = DVHSiegeCore.masterConfig.meetingRoom.toLocation()!!
+        }
         save()
     }
 }

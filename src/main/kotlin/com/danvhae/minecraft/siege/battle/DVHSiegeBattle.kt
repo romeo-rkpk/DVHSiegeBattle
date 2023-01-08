@@ -25,5 +25,6 @@ class DVHSiegeBattle : JavaPlugin(){
         pm.registerEvents(PlayerFightListener(), this)
         pm.registerEvents(IllegalProjectileUsedListener(), this)
         pm.registerEvents(PlayerRespawnListener(), this)
+        pm.registerEvents(SiegeEndListener(), this)
     }
 }
