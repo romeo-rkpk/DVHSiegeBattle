@@ -31,6 +31,10 @@ class EnterCastleListener : Listener {
 
         event.siegePlayer?:return
         if(event.siegePlayer!!.team == castle.ownerPlayer()?.team)return
+        if(!DVHSiegeCore.masterConfig.period){
+            event.player.health = 0.0 //공성시간 외 침입
+            return
+        }
         castle.status = SiegeCastleStatus.UNDER_BATTLE
     }
 
