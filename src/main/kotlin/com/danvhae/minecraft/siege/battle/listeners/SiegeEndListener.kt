@@ -10,11 +10,12 @@ import org.bukkit.event.Listener
 class SiegeEndListener : Listener {
 
     @EventHandler
-    fun onSiegeEnd(event:SiegeEndEvent){
-        Bukkit.getOnlinePlayers().forEach { player->
-            val sPlayer = SiegePlayer[player.uniqueId]?:return
-            if(player.health == 0.0)return
+    fun onSiegeEnd(event:SiegeEndEvent  ){
+        //Bukkit.getLogger().warning("event called")
+        for (player in Bukkit.getOnlinePlayers()) {
+            val sPlayer = SiegePlayer[player.uniqueId]?:continue
             val castles = LocationUtil.locationAtStars(player.location)
+            //Bukkit.getLogger().warning("${castles.toList()} (${player.name})")
             inner@for(c in castles){
                 c.team?:continue
                 if(c.team != sPlayer.team){
