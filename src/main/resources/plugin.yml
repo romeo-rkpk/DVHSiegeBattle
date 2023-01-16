@@ -7,3 +7,7 @@ description: 꿈벅 공성전 콘텐츠 전투 제어 플러그인
 
 depend: [WorldEdit, WorldGuard, DVHSiegeCore]
 softdepend: [DP-CORE, DP-RPG]
+
+commands:
+  battle-config:
+    description: battle configuration command
