@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.danvhae.minecraft.siege.battle"
-version = "1.1.2"
+version = "1.1.2-a4"
 
 repositories {
     mavenCentral()

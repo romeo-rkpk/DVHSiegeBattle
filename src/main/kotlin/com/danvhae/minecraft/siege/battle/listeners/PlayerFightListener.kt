@@ -5,6 +5,7 @@ import com.danvhae.minecraft.siege.battle.utils.DistanceUtil
 import com.danvhae.minecraft.siege.core.DVHSiegeCore
 import com.danvhae.minecraft.siege.core.objects.SiegeCastle
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
+import com.danvhae.minecraft.siege.core.objects.WorldConfiguration
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.entity.Projectile
@@ -33,7 +34,9 @@ class PlayerFightListener : Listener {
             else -> return
         }
 
-        if(victim.location.world.name !in listOf("star", "DIM1", DVHSiegeCore.masterConfig.wildWorldName))return
+        //if(victim.location.world.name !in listOf("world", "star", "DIM1", DVHSiegeCore.masterConfig.wildWorldName))return
+        //PvP 제어 월드에 없으면 판단 중지
+        if(victim.location.world !in WorldConfiguration)return
 
         val siegeVictim = SiegePlayer.DATA[victim.uniqueId]?:return
         val siegeAttacker = SiegePlayer.DATA[attacker.uniqueId]?:return
@@ -43,7 +46,9 @@ class PlayerFightListener : Listener {
             return
         }
 
-        if(victim.location.world.name == DVHSiegeCore.masterConfig.wildWorldName)return
+        //if(victim.location.world.name == DVHSiegeCore.masterConfig.wildWorldName)return
+        //별이 없는 월드이면 투사체 방호 혹은 데미지 경감에 대하여 계산할 이유 없음
+        if(!WorldConfiguration[victim.location.world]!!.castleWorld)return
 
         var sum = 0.0
         var count = 0
