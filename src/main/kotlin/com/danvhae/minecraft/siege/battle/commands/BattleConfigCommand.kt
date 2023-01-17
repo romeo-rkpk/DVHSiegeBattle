@@ -28,8 +28,8 @@ class BattleConfigCommand : CommandExecutor {
                     sender.sendMessage("Invalid Model")
                     return false
                 }
-                sender.sendMessage("current model : ${DVHSiegeBattle.battleConfig.arrow}")
             }
+            sender.sendMessage("current model : ${DVHSiegeBattle.battleConfig.arrow}")
         }
         return true
     }
