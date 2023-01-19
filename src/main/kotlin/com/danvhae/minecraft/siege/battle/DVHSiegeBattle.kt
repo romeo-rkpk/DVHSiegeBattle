@@ -4,6 +4,8 @@ import com.danvhae.minecraft.siege.battle.commands.BattleConfigCommand
 import com.danvhae.minecraft.siege.battle.completer.BattleConfigCompleter
 import com.danvhae.minecraft.siege.battle.listeners.*
 import com.danvhae.minecraft.siege.battle.objects.BattleConfiguration
+import com.danvhae.minecraft.siege.battle.utils.ScoreBoardUtil
+import com.danvhae.minecraft.siege.core.DVHSiegeCore
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -29,6 +31,7 @@ class DVHSiegeBattle : JavaPlugin(){
         pm.registerEvents(PlayerFightListener(), this)
         pm.registerEvents(IllegalProjectileUsedListener(), this)
         pm.registerEvents(PlayerRespawnListener(), this)
+        pm.registerEvents(SiegeStartListener(), this)
         pm.registerEvents(SiegeEndListener(), this)
         pm.registerEvents(ProjectileDamageListener(), this)
 
@@ -36,5 +39,7 @@ class DVHSiegeBattle : JavaPlugin(){
             it.executor = BattleConfigCommand()
             it.tabCompleter = BattleConfigCompleter()
         }
+
+        ScoreBoardUtil.nameVisible(DVHSiegeCore.masterConfig.period)
     }
 }

@@ -1,5 +1,6 @@
 package com.danvhae.minecraft.siege.battle.listeners
 
+import com.danvhae.minecraft.siege.battle.utils.ScoreBoardUtil
 import com.danvhae.minecraft.siege.core.events.SiegeEndEvent
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
 import com.danvhae.minecraft.siege.core.utils.LocationUtil
@@ -24,5 +25,7 @@ class SiegeEndListener : Listener {
                 }
             }
         }
+
+        ScoreBoardUtil.nameVisible(false)
     }
 }
