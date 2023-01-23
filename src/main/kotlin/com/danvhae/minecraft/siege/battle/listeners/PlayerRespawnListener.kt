@@ -4,6 +4,7 @@ import com.danvhae.minecraft.siege.core.DVHSiegeCore
 import com.danvhae.minecraft.siege.core.enums.SiegeCastleStatus
 import com.danvhae.minecraft.siege.core.events.SiegeEndEvent
 import com.danvhae.minecraft.siege.core.objects.SiegePlayer
+import com.danvhae.minecraft.siege.core.objects.WorldConfiguration
 import com.danvhae.minecraft.siege.core.utils.FileUtil
 import com.danvhae.minecraft.siege.core.utils.LocationUtil
 import org.bukkit.Location
@@ -35,7 +36,7 @@ class PlayerRespawnListener : Listener {
     @EventHandler
     fun onPlayerDeath(event:PlayerDeathEvent){
         val location = event.entity.location
-        if(location.world.name !in listOf("star", "DIM1"))return
+        if(location.world !in WorldConfiguration)return
         val siegePlayer = SiegePlayer.DATA[event.entity.uniqueId]?:return
 
         val castles = LocationUtil.locationAtStars(event.entity.location)
