@@ -1,5 +1,6 @@
 package com.danvhae.minecraft.siege.battle.listeners
 
+import com.danvhae.minecraft.siege.battle.DVHSiegeBattle
 import com.danvhae.minecraft.siege.core.DVHSiegeCore
 import com.danvhae.minecraft.siege.core.enums.SiegeCastleStatus
 import com.danvhae.minecraft.siege.core.events.EnterCastleEvent
@@ -32,7 +33,10 @@ class EnterCastleListener : Listener {
         event.siegePlayer?:return
         if(event.siegePlayer!!.team == castle.ownerPlayer()?.team)return
         if(!DVHSiegeCore.masterConfig.period){
-            event.player.health = 0.0 //공성시간 외 침입
+            //event.player.health = 0.0 //공성시간 외 침입
+            Bukkit.getScheduler().runTaskLater(DVHSiegeBattle.instance, {
+                event.player.health = 0.0
+            }, 2L)
             return
         }
         castle.status = SiegeCastleStatus.UNDER_BATTLE
