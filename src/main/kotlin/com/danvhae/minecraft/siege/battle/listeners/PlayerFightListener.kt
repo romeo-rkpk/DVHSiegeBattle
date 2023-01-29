@@ -48,8 +48,9 @@ class PlayerFightListener : Listener {
 
         //if(victim.location.world.name == DVHSiegeCore.masterConfig.wildWorldName)return
         //별이 없는 월드이면 투사체 방호 혹은 데미지 경감에 대하여 계산할 이유 없음
-        if(!WorldConfiguration[victim.location.world]!!.castleWorld)return
-        Bukkit.getLogger().warning("데미지 경감 계산 중")
+        //if(!WorldConfiguration[victim.location.world]!!.castleWorld)return
+        //Bukkit.getLogger().warning("데미지 경감 계산 중")
+        /*
         var sum = 0.0
         var count = 0
 
@@ -69,6 +70,8 @@ class PlayerFightListener : Listener {
             return
         }
         event.damage *= (sum / count)
+
+         */
 
     }
 }

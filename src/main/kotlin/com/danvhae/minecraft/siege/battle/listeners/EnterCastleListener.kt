@@ -19,10 +19,14 @@ class EnterCastleListener : Listener {
         if(castle.status == SiegeCastleStatus.ELIMINATED){
             event.siegePlayer?.let {
                 Bukkit.getPlayer(it.playerUUID)!!.let{player->
-                    player.health = 0.0
-                    player.sendMessage("별에 진입할 수 없습니다.")
+                    //player.health = 0.0
+                    //player.sendMessage("별에 진입할 수 없습니다.")
                     //player.teleport(DVHSiegeCore.masterConfig.meetingRoom.toLocation()!!)
                     //player.sendMessage("별에 진입할 수 없습니다.")
+                Bukkit.getScheduler().runTaskLater(DVHSiegeBattle.instance, {
+                        player.health = 0.0
+                    player.sendMessage("별에 진입할 수 없습니다.")
+                    },2L)
                 }
 
             }
